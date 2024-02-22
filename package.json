@@ -1,14 +1,17 @@
 {
-  "name": "Test-rent-cars",
+  "name": "test-rent-cars",
   "description": "This personal test task is done on React",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/DenysShchypt/Test-rent-cars.git",
+  "homepage": "https://DenysShchypt.github.io/test-rent-cars/",
   "dependencies": {
+    "-": "^0.0.1",
     "@reduxjs/toolkit": "^2.2.1",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.6.7",
+    "g": "^2.0.1",
     "modern-normalize": "^2.0.0",
     "normalize.css": "^8.0.1",
     "react": "^18.1.0",
@@ -18,7 +21,8 @@
     "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.8",
-    "web-vitals": "^2.1.3"
+    "web-vitals": "^2.1.3",
+    "yarn": "^1.22.21"
   },
   "scripts": {
     "dev": "react-scripts start",
