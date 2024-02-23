@@ -1,5 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { StyleCar } from './Car.styled';
+import { openModal } from '../../redux/modal/modalSlice';
 
 const Car = ({
   model,
@@ -13,13 +15,13 @@ const Car = ({
   rentalCompany,
   id,
   functionalities,
-  openModal,
   fuelConsumption,
   engineSize,
   accessories,
   rentalConditions,
   mileage,
 }) => {
+  const dispatch = useDispatch();
   return (
     <StyleCar>
       <img className="carImg" src={img} alt={description} />
@@ -40,25 +42,26 @@ const Car = ({
       </div>
       <button
         onClick={() =>
-          openModal({
-            model,
-            img,
-            make,
-            type,
-            year,
-            rentalPrice,
-            description,
-            address,
-            rentalCompany,
-            id,
-            functionalities,
-            fuelConsumption,
-            openModal,
-            engineSize,
-            accessories,
-            rentalConditions,
-            mileage,
-          })
+          dispatch(
+            openModal({
+              model,
+              img,
+              make,
+              type,
+              year,
+              rentalPrice,
+              description,
+              address,
+              rentalCompany,
+              id,
+              functionalities,
+              fuelConsumption,
+              engineSize,
+              accessories,
+              rentalConditions,
+              mileage,
+            })
+          )
         }
         className="carBtn"
         type="button"

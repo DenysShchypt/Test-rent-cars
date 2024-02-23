@@ -10,19 +10,34 @@ const handleRejected = (state, action) => {
 };
 const initialState = {
     page: 1,
-    typeCars: []
+    auto: [],
+    filterTerm: '',
+    filterTermCars: []
 }
 export const carsSlice = createSlice({
     name: "cars",
-    initialState: initialState,
+    initialState,
+    reducers: {
+        changePage(state, actions) {
+            state.page = actions.payload
+        },
+        setFilterTerm(state, action) {
+            state.filterTerm = action.payload
+        },
+        setFilterTermCars(state, action) {
+            state.filterTermCars = action.payload
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetchCars.pending, handlePending)
-        builder.addCase(fetchCars.fulfilled, (state, action) => {
+        builder.addCase(fetchCars.fulfilled, (state, actions) => {
+            console.log(actions.payload);
             state.isLoading = false;
             state.error = null;
-            state.cars.typeCars = action.payload.typeCars;
-            state.cars.page = action.payload.page;
+            state.auto = [...state.auto, ...actions.payload];
         })
         builder.addCase(fetchCars.rejected, handleRejected)
     }
 })
+
+export const { changePage, setFilterTerm, setFilterTermCars } = carsSlice.actions;

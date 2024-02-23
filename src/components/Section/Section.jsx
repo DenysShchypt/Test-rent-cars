@@ -1,7 +1,4 @@
 import { SectionContainer } from './Section.styled';
-
-const Section = ({ children }) => {
+export const Section = ({ children }) => {
   return <SectionContainer>{children}</SectionContainer>;
 };
-
-export default Section;

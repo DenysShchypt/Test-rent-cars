@@ -1,32 +1,36 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { contactsSlice } from "./contacts/contactsSlice";
-// import { filterSlice } from "./filterSlice";
-// import { persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
-// import {
-//     FLUSH,
-//     REHYDRATE,
-//     PAUSE,
-//     PERSIST,
-//     PURGE,
-//     REGISTER,
-// } from 'redux-persist';
-// import persistStore from "redux-persist/es/persistStore";
+import storage from 'redux-persist/lib/storage';
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from 'redux-persist';
 import { carsSlice } from "./cars/carsSlice";
-import { filterSlice } from "./cars/filterSlice";
-
+import { modalSlice } from "./modal/modalSlice";
+// import { filterSlice } from "./cars/filterSlice";
+const carsConfig = {
+    key: 'cars',
+    storage,
+    whitelist: ['cars'],
+};
 
 export const store = configureStore({
     reducer: {
-        cars: carsSlice.reducer,
-        filter: filterSlice.reducer,
+        cars: persistReducer(carsConfig, carsSlice.reducer),
+        modal: modalSlice.reducer,
+        // filter: filterSlice.reducer,
     },
-    // middleware: getDefaultMiddleware =>
-    //     getDefaultMiddleware({
-    //         serializableCheck: {
-    //             ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    //         },
-    //     })
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        })
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);

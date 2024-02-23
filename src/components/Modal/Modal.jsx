@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { StyleModal } from './Modal.styled';
+import { selectModalData } from '../../redux/modal/selectors';
+import { closeModal } from '../../redux/modal/modalSlice';
 
-export const Modal = ({ modalData, closeModal }) => {
+export const Modal = () => {
+  const modalData = useSelector(selectModalData);
+  const dispatch = useDispatch();
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
-        closeModal();
+        dispatch(closeModal());
       }
     };
 
@@ -16,12 +21,18 @@ export const Modal = ({ modalData, closeModal }) => {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'auto';
     };
-  }, [closeModal]);
+  }, [dispatch]);
+
+  const handleOverlayClick = event => {
+    if (event.target === event.currentTarget) {
+      dispatch(closeModal());
+    }
+  };
   return (
-    <StyleModal>
+    <StyleModal onClick={handleOverlayClick}>
       <div className="modal">
         <button
-          onClick={() => closeModal()}
+          onClick={() => dispatch(closeModal())}
           className="closeModalBtn"
           type="button"
         >

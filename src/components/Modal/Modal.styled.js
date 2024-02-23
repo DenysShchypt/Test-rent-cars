@@ -16,7 +16,6 @@ transform: translate(-50%, -50%);
 padding: 40px;
 border-radius: 24px;
 width: 541px;
-height: 752px;
 background: #fff;
 
 }
