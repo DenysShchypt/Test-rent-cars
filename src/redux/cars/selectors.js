@@ -1,5 +1,3 @@
-import { createSelector } from "@reduxjs/toolkit";
-
 export const selectCars = state => state.cars.auto;
 export const selectCarsPage = state => state.cars.page;
 export const selectFilterCars = state => state.cars.filterTermCars;
