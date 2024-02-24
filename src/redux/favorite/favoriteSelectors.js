@@ -1,0 +1,1 @@
+export const favoriteCars = (state) => state.favorite.listFavoriteCars

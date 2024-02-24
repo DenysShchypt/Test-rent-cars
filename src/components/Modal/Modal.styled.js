@@ -108,6 +108,7 @@ line-height: 1.5;
 color: rgba(18, 20, 23, 0.5);
 }
 .modalBtn{
+    border:none;
 border-radius: 12px;
 padding: 12px 50px;
 width: 168px;

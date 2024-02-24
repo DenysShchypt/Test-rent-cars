@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import { StyledHeader } from './Layout.styled';
 
 const Layout = ({ children }) => {
@@ -16,7 +16,9 @@ const Layout = ({ children }) => {
           Favorites
         </NavLink>
       </StyledHeader>
-      <main>{children}</main>
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

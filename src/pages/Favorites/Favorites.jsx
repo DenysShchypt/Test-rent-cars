@@ -1,52 +1,26 @@
-import { CatalogList } from './Catalog.styled';
-import { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import Car from 'components/Car/Car';
+import { useSelector } from 'react-redux';
+import { Filter } from '../../components/Filter/Filter';
 import { Modal } from '../../components/Modal/Modal';
 import { Section } from '../../components/Section/Section';
-import { fetchCars } from '../../redux/cars/operations';
-import {
-  selectCars,
-  selectCarsPage,
-  selectFilterCars,
-} from '../../redux/cars/carsSelectors';
-import { changePage } from '../../redux/cars/carsSlice';
+import { favoriteCars } from '../../redux/favorite/favoriteSelectors';
 import { selectIsOpenModal } from '../../redux/modal/modalSelectors';
-import { Filter } from 'components/Filter/Filter';
-import { ButtonLoadMore } from 'components/ButtonLoadMore/ButtonLoadMore';
+import { selectFilterCars } from '../../redux/cars/carsSelectors';
+import { FavoriteList } from './Favorites.styled';
 
-const Catalog = () => {
+const Favorites = () => {
   const isOpenModal = useSelector(selectIsOpenModal);
+  const favoriteCarsList = useSelector(favoriteCars);
   const valueStateFilter = useSelector(selectFilterCars);
-  const carsList = useSelector(selectCars);
-  const page = useSelector(selectCarsPage);
-  const startPage = useRef(true);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (startPage.current === false) {
-      dispatch(fetchCars(page));
-    }
-
-    return () => {
-      startPage.current = false;
-    };
-  }, [dispatch, page]);
-
-  const handlePage = () => {
-    if (page === 4) return;
-    dispatch(changePage());
-  };
-
   return (
     <div>
       <Section>
         <Filter />
       </Section>
       <Section>
-        <CatalogList>
+        <FavoriteList>
           {valueStateFilter.length === 0
-            ? carsList.map(car => {
+            ? favoriteCarsList.map(car => {
                 return (
                   <Car
                     key={car.id}
@@ -92,14 +66,11 @@ const Catalog = () => {
                   />
                 );
               })}
-        </CatalogList>
-      </Section>
-      <Section>
-        <ButtonLoadMore handlePage={handlePage} />
+        </FavoriteList>
       </Section>
       {isOpenModal && <Modal />}
     </div>
   );
 };
 
-export default Catalog;
+export default Favorites;

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { StyleModal } from './Modal.styled';
-import { selectModalData } from '../../redux/modal/selectors';
+import { selectModalData } from '../../redux/modal/modalSelectors';
 import { closeModal } from '../../redux/modal/modalSlice';
 
 export const Modal = () => {

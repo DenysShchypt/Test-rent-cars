@@ -9,7 +9,7 @@ font-size: 20px;
 padding: 20px;
 margin-right: 25px;
 display: inline-flex;
-border: 1px solid black;
+border: none;
 border-radius: 10px;
 transition: all 0.3s;
 }
