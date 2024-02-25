@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledFilter = styled.header`
+export const StyledFilter = styled.form`
 width: 859px;
 display: flex;
 margin-left: auto;

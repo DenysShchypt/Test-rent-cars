@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { StyleCar } from './Car.styled';
 import { openModal } from '../../redux/modal/modalSlice';
@@ -47,6 +47,21 @@ const Car = ({
   const dispatch = useDispatch();
   const activeElement = useRef(null);
 
+  useEffect(() => {
+    const listFavoriteCars = JSON.parse(
+      JSON.parse(localStorage.getItem('persist:favorite')).favorite
+    ).listFavoriteCars;
+    const hasDuplicatesCar = listFavoriteCars.some(
+      favorite => favorite.id === id
+    );
+    if (hasDuplicatesCar && activeElement.current) {
+      activeElement.current.classList.add('activeHeart');
+    }
+    if (!hasDuplicatesCar && activeElement.current) {
+      activeElement.current.classList.remove('activeHeart');
+    }
+  }, [id]);
+
   const handleFavorite = () => {
     const listFavoriteCars = JSON.parse(
       JSON.parse(localStorage.getItem('persist:favorite')).favorite
@@ -68,11 +83,9 @@ const Car = ({
     <StyleCar>
       <div className="boxImg">
         <img className="carImg" src={img} alt={description} />
-        <IconHeart
-          ref={activeElement}
-          className="heart"
-          onClick={handleFavorite}
-        ></IconHeart>
+        <button onClick={handleFavorite} type="button">
+          <IconHeart ref={activeElement} className="heart"></IconHeart>
+        </button>
       </div>
 
       <div className="description">

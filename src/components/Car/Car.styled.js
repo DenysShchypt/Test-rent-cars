@@ -22,9 +22,11 @@ top: 14px;
 right: 14px; 
 width: 18px; 
 height: 18px;
+stroke:white;
 }
 .activeHeart{
-fill: red;
+fill: #3470FF;
+stroke: none;
 }
 
 .description{
