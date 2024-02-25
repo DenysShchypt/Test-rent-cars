@@ -8,66 +8,28 @@ import {
   removeFavoriteCar,
 } from '../../redux/favorite/favoriteSlice';
 
-const Car = ({
-  model,
-  img,
-  make,
-  type,
-  year,
-  rentalPrice,
-  description,
-  address,
-  rentalCompany,
-  id,
-  functionalities,
-  fuelConsumption,
-  engineSize,
-  accessories,
-  rentalConditions,
-  mileage,
-}) => {
-  const oneCar = {
-    model,
-    img,
-    make,
-    type,
-    year,
-    rentalPrice,
-    description,
-    address,
-    rentalCompany,
-    id,
-    functionalities,
-    fuelConsumption,
-    engineSize,
-    accessories,
-    rentalConditions,
-    mileage,
-  };
+const Car = ({ oneCar }) => {
   const dispatch = useDispatch();
   const activeElement = useRef(null);
 
   useEffect(() => {
     const listFavoriteCars = JSON.parse(
-      JSON.parse(localStorage.getItem('persist:favorite')).favorite
+      JSON.parse(localStorage.getItem('persist:auto')).favorite
     ).listFavoriteCars;
     const hasDuplicatesCar = listFavoriteCars.some(
-      favorite => favorite.id === id
+      favorite => favorite.id === oneCar.id
     );
     if (hasDuplicatesCar && activeElement.current) {
       activeElement.current.classList.add('activeHeart');
     }
-    if (!hasDuplicatesCar && activeElement.current) {
-      activeElement.current.classList.remove('activeHeart');
-    }
-  }, [id]);
+  }, [oneCar.id]);
 
   const handleFavorite = () => {
     const listFavoriteCars = JSON.parse(
-      JSON.parse(localStorage.getItem('persist:favorite')).favorite
+      JSON.parse(localStorage.getItem('persist:auto')).favorite
     ).listFavoriteCars;
     const hasDuplicatesCar = listFavoriteCars.some(
-      favorite => favorite.id === id
+      favorite => favorite.id === oneCar.id
     );
     if (hasDuplicatesCar && activeElement.current) {
       dispatch(removeFavoriteCar(oneCar));
@@ -82,50 +44,31 @@ const Car = ({
   return (
     <StyleCar>
       <div className="boxImg">
-        <img className="carImg" src={img} alt={description} />
-        <button onClick={handleFavorite} type="button">
-          <IconHeart ref={activeElement} className="heart"></IconHeart>
-        </button>
+        <img className="carImg" src={oneCar.img} alt={oneCar.description} />
+        <div className="heart">
+          <button onClick={handleFavorite} type="button" className="heartBtn">
+            <IconHeart ref={activeElement}></IconHeart>
+          </button>
+        </div>
       </div>
 
       <div className="description">
         <div className="titleDescription">
-          <h3 className="titleCar">{make}</h3>
-          <p className="titleCar modelColor">{model},</p>
-          <p className="titleCar">{year}</p>
-          <p className="price ">{rentalPrice}</p>
+          <h3 className="titleCar">{oneCar.make}</h3>
+          <p className="titleCar modelColor">{oneCar.model},</p>
+          <p className="titleCar">{oneCar.year}</p>
+          <p className="price ">{oneCar.rentalPrice}</p>
         </div>
         <ul className="list carFeatures">
-          <li className="carText">{address}</li>
-          <li className="carText">{rentalCompany}</li>
-          <li className="carText">{model}</li>
-          <li className="carText">{id}</li>
-          <li className="carText">{functionalities[0]}</li>
+          <li className="carText">{oneCar.address}</li>
+          <li className="carText">{oneCar.rentalCompany}</li>
+          <li className="carText">{oneCar.model}</li>
+          <li className="carText">{oneCar.id}</li>
+          <li className="carText">{oneCar.functionalities[0]}</li>
         </ul>
       </div>
       <button
-        onClick={() =>
-          dispatch(
-            openModal({
-              model,
-              img,
-              make,
-              type,
-              year,
-              rentalPrice,
-              description,
-              address,
-              rentalCompany,
-              id,
-              functionalities,
-              fuelConsumption,
-              engineSize,
-              accessories,
-              rentalConditions,
-              mileage,
-            })
-          )
-        }
+        onClick={() => dispatch(openModal(oneCar))}
         className="carBtn"
         type="button"
       >

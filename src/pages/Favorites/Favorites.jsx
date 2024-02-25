@@ -5,68 +5,39 @@ import { Modal } from '../../components/Modal/Modal';
 import { Section } from '../../components/Section/Section';
 import { favoriteCars } from '../../redux/favorite/favoriteSelectors';
 import { selectIsOpenModal } from '../../redux/modal/modalSelectors';
-import { selectFilterCars } from '../../redux/cars/carsSelectors';
+import {
+  selectFilterCars,
+  selectIsLoading,
+} from '../../redux/cars/carsSelectors';
 import { FavoriteList } from './Favorites.styled';
+import Loader from 'components/Loader/Loader';
+import { FavoriteChoose } from 'components/FavoriteChoose/FavoriteChoose';
 
 const Favorites = () => {
   const isOpenModal = useSelector(selectIsOpenModal);
   const favoriteCarsList = useSelector(favoriteCars);
   const valueStateFilter = useSelector(selectFilterCars);
+  const isLoading = useSelector(selectIsLoading);
   return (
     <div>
       <Section>
         <Filter />
       </Section>
       <Section>
-        <FavoriteList>
-          {valueStateFilter.length === 0
-            ? favoriteCarsList.map(car => {
-                return (
-                  <Car
-                    key={car.id}
-                    id={car.id}
-                    img={car.img}
-                    type={car.type}
-                    fuelConsumption={car.fuelConsumption}
-                    engineSize={car.engineSize}
-                    make={car.make}
-                    model={car.model}
-                    year={car.year}
-                    rentalPrice={car.rentalPrice}
-                    description={car.description}
-                    address={car.address}
-                    rentalCompany={car.rentalCompany}
-                    functionalities={car.functionalities}
-                    accessories={car.accessories}
-                    rentalConditions={car.rentalConditions}
-                    mileage={car.mileage}
-                  />
-                );
-              })
-            : valueStateFilter.map(car => {
-                return (
-                  <Car
-                    key={car.id}
-                    id={car.id}
-                    img={car.img}
-                    type={car.type}
-                    fuelConsumption={car.fuelConsumption}
-                    engineSize={car.engineSize}
-                    make={car.make}
-                    model={car.model}
-                    year={car.year}
-                    rentalPrice={car.rentalPrice}
-                    description={car.description}
-                    address={car.address}
-                    rentalCompany={car.rentalCompany}
-                    functionalities={car.functionalities}
-                    accessories={car.accessories}
-                    rentalConditions={car.rentalConditions}
-                    mileage={car.mileage}
-                  />
-                );
-              })}
-        </FavoriteList>
+        {isLoading && <Loader />}
+        {favoriteCarsList.length === 0 ? (
+          <FavoriteChoose />
+        ) : (
+          <FavoriteList>
+            {valueStateFilter.length === 0
+              ? favoriteCarsList.map(car => {
+                  return <Car key={car.id} oneCar={car} />;
+                })
+              : valueStateFilter.map(car => {
+                  return <Car key={car.id} oneCar={car} />;
+                })}
+          </FavoriteList>
+        )}
       </Section>
       {isOpenModal && <Modal />}
     </div>

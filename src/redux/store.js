@@ -15,7 +15,7 @@ import { modalSlice } from "./modal/modalSlice";
 import { favoriteSlice } from "./favorite/favoriteSlice";
 
 const carsConfig = {
-    key: 'favorite',
+    key: 'auto',
     storage,
     whitelist: 'favorite',
 };

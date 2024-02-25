@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars } from './operations'
+import { fetchCars, firstCars } from './operations'
 
 const handlePending = state => {
     state.isLoading = true;
@@ -21,23 +21,29 @@ export const carsSlice = createSlice({
         changePage(state, actions) {
             state.page = actions.payload
         },
-        setFilterTerm(state, action) {
-            state.filterTerm = action.payload
+        setFilterTerm(state, actions) {
+            state.filterTerm = actions.payload
         },
-        setFilterTermCars(state, action) {
-            state.filterTermCars = action.payload
-        }
+        setFilterTermCars(state, actions) {
+            state.filterTermCars = actions.payload
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchCars.pending, handlePending)
+        builder.addCase(firstCars.pending, handlePending)
         builder.addCase(fetchCars.fulfilled, (state, actions) => {
-            console.log(actions.payload);
             state.isLoading = false;
             state.error = null;
             state.auto = [...state.auto, ...actions.payload];
         })
+        builder.addCase(firstCars.fulfilled, (state, actions) => {
+            state.isLoading = false;
+            state.error = null;
+            state.auto = actions.payload;
+        })
         builder.addCase(fetchCars.rejected, handleRejected)
-    }
+        builder.addCase(firstCars.rejected, handleRejected)
+    },
 })
 
 export const { changePage, setFilterTerm, setFilterTermCars } = carsSlice.actions;

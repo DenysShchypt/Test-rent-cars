@@ -28,6 +28,10 @@ stroke:white;
 fill: #3470FF;
 stroke: none;
 }
+.heartBtn{
+  background-color: inherit;
+  border: none;
+}
 
 .description{
 margin-bottom: 28px;

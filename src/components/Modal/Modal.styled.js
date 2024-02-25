@@ -81,26 +81,17 @@ font-size: 14px;
 line-height: 1.42857;
 color: #121417;
 }
-.accessories{
-        display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 4px;
-}
 .accessory{
-     margin-right: 12px;
+margin: 4px 12px 0 0;
 font-family: "Manrope", sans-serif;
 font-weight: 400;
 font-size: 12px;
 line-height: 1.5;
 color: rgba(18, 20, 23, 0.5);
 }
-.functionalities{
-    display: flex;
-    flex-wrap: wrap;
 
-}
 .functionality{
-    margin-right: 12px;
+margin: 0px 12px 0px 0px;
 font-family: "Manrope", sans-serif;
 font-weight: 400;
 font-size: 12px;
@@ -114,11 +105,15 @@ padding: 12px 50px;
 width: 168px;
 height: 44px;
 background: #3470ff;
+
+cursor: pointer;
+}
+.modalBtnText{
 font-family: "Manrope", sans-serif;
 font-weight: 600;
 font-size: 12px;
 line-height: 1.42857;
 color: #fff;
-cursor: pointer;
+text-decoration: none;
 }
 `

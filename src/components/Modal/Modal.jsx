@@ -28,6 +28,7 @@ export const Modal = () => {
       dispatch(closeModal());
     }
   };
+
   return (
     <StyleModal onClick={handleOverlayClick}>
       <div className="modal">
@@ -63,16 +64,10 @@ export const Modal = () => {
         </div>
         <div className="componentBox">
           <p className="componentTitle">Accessories and functionalities:</p>
-          <ul className="accessories list">
-            {modalData.accessories.map(accessory => {
-              return <li className="accessory">{accessory}</li>;
-            })}
-          </ul>
-          <ul className="functionalities list">
-            {modalData.functionalities.map(functionality => {
-              return <li className="functionality">{functionality}</li>;
-            })}
-          </ul>
+          <p className="accessory">{modalData.accessories.join(' | ')}</p>
+          <p className="functionality">
+            {modalData.functionalities.join(' | ')}
+          </p>
         </div>
         <div>
           <p className="componentTitle">Rental Conditions: </p>
@@ -83,7 +78,9 @@ export const Modal = () => {
           </div>
         </div>
         <button className="modalBtn" type="button">
-          Rental car
+          <a href="tel:+380730000000" className="modalBtnText">
+            Rental car
+          </a>
         </button>
       </div>
     </StyleModal>
