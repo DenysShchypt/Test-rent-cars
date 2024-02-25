@@ -29,7 +29,7 @@ export const Filter = ({ handleSearchCar }) => {
           <option className="makeSearch">{queryMake}</option>
           {makes.map((make, i) => (
             <option key={i} value={make}>
-              {make}
+              {make} && Enter the text
             </option>
           ))}
         </select>

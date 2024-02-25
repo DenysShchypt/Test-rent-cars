@@ -63,10 +63,10 @@ const Car = ({ oneCar }) => {
           <p className="price ">{oneCar.rentalPrice}</p>
         </div>
         <ul className="list carFeatures">
-          <li className="carText">{oneCar.address}</li>
-          <li className="carText">{oneCar.rentalCompany}</li>
-          <li className="carText">{oneCar.model}</li>
-          <li className="carText">{oneCar.id}</li>
+          <li className="carText">{oneCar.address} | </li>
+          <li className="carText">{oneCar.rentalCompany} | </li>
+          <li className="carText">{oneCar.model} | </li>
+          <li className="carText">{oneCar.id} | </li>
           <li className="carText">{oneCar.functionalities[0]}</li>
         </ul>
       </div>

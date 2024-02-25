@@ -89,6 +89,22 @@ font-size: 12px;
 line-height: 1.5;
 color: rgba(18, 20, 23, 0.5);
 }
+.conditionBox{
+display: flex;
+flex-wrap: wrap;
+}
+.conditions{
+padding: 7px 14px;
+font-family: "Manrope", sans-serif;
+font-weight: 400;
+font-size: 12px;
+line-height: 1.5;
+color: #363535;
+}
+.conditionValue{
+font-weight: 600;
+color: #3470ff;
+}
 
 .functionality{
 margin: 0px 12px 0px 0px;

@@ -51,10 +51,10 @@ export const Modal = () => {
             <p className="titleCar">{modalData.year}</p>
           </div>
           <ul className="list carFeatures">
-            <li className="carText">{modalData.address}</li>
-            <li className="carText">Id: {modalData.id}</li>
-            <li className="carText">Year: {modalData.year}</li>
-            <li className="carText">Type: {modalData.type}</li>
+            <li className="carText">{modalData.address} | </li>
+            <li className="carText">Id: {modalData.id} | </li>
+            <li className="carText">Year: {modalData.year} | </li>
+            <li className="carText">Type: {modalData.type} | </li>
             <li className="carText">
               FuelConsumption: {modalData.fuelConsumption}
             </li>
@@ -71,10 +71,20 @@ export const Modal = () => {
         </div>
         <div>
           <p className="componentTitle">Rental Conditions: </p>
-          <div>
+          <div className="conditionBox">
             <p className="conditions">{modalData.rentalConditions}</p>
-            <p className="conditions">{modalData.mileage}</p>
-            <p className="conditions">{modalData.rentalPrice}</p>
+            <p className="conditions">
+              Mileage:
+              <span className="conditionValue">
+                {modalData.mileage
+                  .toString()
+                  .replace(/(\d)(?=(\d{3})+$)/g, '$1,')}
+              </span>
+            </p>
+            <p className="conditions">
+              Price:
+              <span className="conditionValue">{modalData.rentalPrice}</span>
+            </p>
           </div>
         </div>
         <button className="modalBtn" type="button">
