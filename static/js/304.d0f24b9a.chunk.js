@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktest_rent_cars=self.webpackChunktest_rent_cars||[]).push([[304],{304:function(e,n,t){t.r(n),t.d(n,{default:function(){return o}});var r,c=t(168),i=t(7924).ZP.p(r||(r=(0,c.Z)(["\ntext-align: center;\nmargin-top: 100px;\nfont-weight: 700;\nfont-size: 56px;\nline-height: 1.07;\nletter-spacing: 0.02em;\n"]))),s=t(184),o=function(){return(0,s.jsx)(i,{children:"We glad to welcome you to our car ordering service"})}}}]);
+//# sourceMappingURL=304.d0f24b9a.chunk.js.map
