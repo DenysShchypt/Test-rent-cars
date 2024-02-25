@@ -74,7 +74,7 @@ const Catalog = () => {
         </CatalogList>
       </Section>
       <Section>
-        {page < 3 && <ButtonLoadMore handlePage={handlePage} />}
+        {page <= 3 && <ButtonLoadMore handlePage={handlePage} />}
       </Section>
       {isOpenModal && <Modal />}
     </div>

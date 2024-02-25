@@ -29,8 +29,8 @@ fill: #3470FF;
 stroke: none;
 }
 .heartBtn{
-  background-color: inherit;
-  border: none;
+background-color: inherit;
+border: none;
 }
 
 .description{
@@ -52,15 +52,15 @@ line-height: 1.5;
 color: #121417;
 }
 .modelColor{
-    color: #3470ff;
+color: #3470ff;
 }
 .price{
-    margin-left: auto;
+margin-left: auto;
 }
 .carFeatures{
-    display: flex;
-    flex-wrap: wrap;
-    padding-right: 4px;
+display: flex;
+flex-wrap: wrap;
+padding-right: 4px;
 }
 .carText{
 font-family: "Manrope", sans-serif;

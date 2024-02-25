@@ -10,11 +10,11 @@ margin-top: 50px;
 align-items:flex-end;
 
 .boxSearchFilter{
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 .brandSearch{
-    margin-bottom: 8px;
+margin-bottom: 8px;
 font-family: "Manrope", sans-serif;
 font-weight: 500;
 font-size: 14px;

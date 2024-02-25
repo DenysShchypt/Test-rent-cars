@@ -41,8 +41,8 @@ export const Modal = () => {
         </button>
         <img
           className="ModalImg"
-          src={`${modalData.img}`}
-          alt={`${modalData.description}`}
+          src={modalData.img || modalData.photoLink}
+          alt={modalData.description}
         />
         <div className="aboutModel">
           <div className="titleDescription">

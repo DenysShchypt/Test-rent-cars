@@ -51,9 +51,9 @@ color: #121417;
 color: #3470ff;
 }
 .carFeatures{
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 14px;
+display: flex;
+flex-wrap: wrap;
+ margin-bottom: 14px;
 }
 .carText{
 margin-right: 12px;
@@ -71,11 +71,11 @@ line-height: 1.42857;
 color: #121417;
 }
 .componentBox{
-    margin-bottom: 24px;
+margin-bottom: 24px;
 }
 .componentTitle{
-    margin-bottom: 8px;
-    font-family: "Manrope", sans-serif;
+margin-bottom: 8px;
+font-family: "Manrope", sans-serif;
 font-weight: 500;
 font-size: 14px;
 line-height: 1.42857;
@@ -99,7 +99,7 @@ line-height: 1.5;
 color: rgba(18, 20, 23, 0.5);
 }
 .modalBtn{
-    border:none;
+border:none;
 border-radius: 12px;
 padding: 12px 50px;
 width: 168px;

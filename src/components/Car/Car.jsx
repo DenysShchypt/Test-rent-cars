@@ -40,11 +40,14 @@ const Car = ({ oneCar }) => {
       activeElement.current.classList.add('activeHeart');
     }
   };
-
   return (
     <StyleCar>
       <div className="boxImg">
-        <img className="carImg" src={oneCar.img} alt={oneCar.description} />
+        <img
+          className="carImg"
+          src={oneCar.img || oneCar.photoLink}
+          alt={oneCar.description}
+        />
         <div className="heart">
           <button onClick={handleFavorite} type="button" className="heartBtn">
             <IconHeart ref={activeElement}></IconHeart>
