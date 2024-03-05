@@ -11,7 +11,7 @@ const handleRejected = (state, action) => {
 const initialState = {
     page: 1,
     auto: [],
-    filterTerm: '',
+    filterTerm: 'Enter to text',
     filterTermCars: []
 }
 export const carsSlice = createSlice({
@@ -34,6 +34,7 @@ export const carsSlice = createSlice({
         builder.addCase(fetchCars.fulfilled, (state, actions) => {
             state.isLoading = false;
             state.error = null;
+
             state.auto = [...state.auto, ...actions.payload];
         })
         builder.addCase(firstCars.fulfilled, (state, actions) => {

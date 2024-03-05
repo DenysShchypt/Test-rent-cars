@@ -1,5 +1,6 @@
 import Car from 'components/Car/Car';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { Filter } from '../../components/Filter/Filter';
 import { Modal } from '../../components/Modal/Modal';
 import { Section } from '../../components/Section/Section';
@@ -12,12 +13,17 @@ import {
 import { FavoriteList } from './Favorites.styled';
 import Loader from 'components/Loader/Loader';
 import { FavoriteChoose } from 'components/FavoriteChoose/FavoriteChoose';
+import { setFilterTerm } from '../../redux/cars/carsSlice';
 
 const Favorites = () => {
   const isOpenModal = useSelector(selectIsOpenModal);
   const favoriteCarsList = useSelector(favoriteCars);
+  const dispatch = useDispatch();
   const valueStateFilter = useSelector(selectFilterCars);
   const isLoading = useSelector(selectIsLoading);
+  useEffect(() => {
+    dispatch(setFilterTerm('Enter to text'));
+  }, []);
   return (
     <div>
       <Section>
@@ -29,13 +35,9 @@ const Favorites = () => {
           <FavoriteChoose />
         ) : (
           <FavoriteList>
-            {valueStateFilter.length === 0
-              ? favoriteCarsList.map(car => {
-                  return <Car key={car.id} oneCar={car} />;
-                })
-              : valueStateFilter.map(car => {
-                  return <Car key={car.id} oneCar={car} />;
-                })}
+            {favoriteCarsList.map(car => {
+              return <Car key={car.id} oneCar={car} />;
+            })}
           </FavoriteList>
         )}
       </Section>

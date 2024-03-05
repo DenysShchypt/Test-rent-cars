@@ -13,7 +13,11 @@ import {
   selectFilterCars,
   selectIsLoading,
 } from '../../redux/cars/carsSelectors';
-import { changePage, setFilterTermCars } from '../../redux/cars/carsSlice';
+import {
+  changePage,
+  setFilterTerm,
+  setFilterTermCars,
+} from '../../redux/cars/carsSlice';
 import { selectIsOpenModal } from '../../redux/modal/modalSelectors';
 import { Filter } from '../../components/Filter/Filter';
 import { ButtonLoadMore } from 'components/ButtonLoadMore/ButtonLoadMore';
@@ -28,13 +32,15 @@ const Catalog = () => {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const firstStateFilter = useSelector(selectFilter);
-
+  const queryMake = searchParams.get('make');
   useEffect(() => {
-    const queryMake = searchParams.get('make');
-    if (!queryMake) return;
+    if (!queryMake) {
+      dispatch(setFilterTermCars(carsList));
+      return;
+    }
     const filterCarsList = carsList.filter(cars => cars.make === queryMake);
     dispatch(setFilterTermCars(filterCarsList));
-  }, [dispatch, carsList, searchParams]);
+  }, [dispatch, queryMake, carsList, firstStateFilter]);
 
   useEffect(() => {
     dispatch(firstCars());

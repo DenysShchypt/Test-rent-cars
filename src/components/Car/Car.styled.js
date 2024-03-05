@@ -10,9 +10,11 @@ align-content: space-between;
 position: relative;  
 }
 .carImg{
-border-radius: 14px;
-width: 100%;
 height: 268px;
+border-radius: 14px;
+aspect-ratio: 1/1;
+object-fit: cover;
+object-position: center;
 margin-bottom: 14px;
 background: #f3f3f2, linear-gradient(180deg, #121417 0%, rgba(18, 20, 23, 0) 100%);
 }

@@ -32,6 +32,12 @@ background: #f7f7fb;
 .makeSearch{
 margin-right: 18px;
 border: none;
+font-family: "Manrope", sans-serif;
+font-weight: 500;
+font-size: 18px;
+line-height: 1.11111;
+color: #121417;
+
 }
 .searchBtn{
 margin-left: auto;

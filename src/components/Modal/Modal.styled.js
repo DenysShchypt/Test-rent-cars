@@ -9,14 +9,22 @@ left: 0;
 background: rgba(18, 20, 23, 0.5);
 
 .modal{
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-padding: 40px;
-border-radius: 24px;
-width: 541px;
-background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border-radius: 24px;
+    width: 541px;
+    background: #fff;
+    
+    padding: 20px;
+    max-width: 450px;
+    width: 100%;
+    min-height: 450px;
+    &:hover {
+      cursor: auto;
+    }
 
 }
 .closeModalBtn{

@@ -10,7 +10,9 @@ export const Filter = ({ handleSearchCar }) => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const queryMake = searchParams.get('make');
+  console.log(queryMake);
   const firstStateFilter = useSelector(selectFilter);
+  console.log(firstStateFilter);
   const handleSelectChange = e => {
     dispatch(setFilterTerm(e.target.value));
   };
@@ -26,13 +28,20 @@ export const Filter = ({ handleSearchCar }) => {
           value={firstStateFilter}
           onChange={handleSelectChange}
         >
-          <option className="makeSearch">{queryMake}</option>
+          {queryMake !== null ? (
+            <option className="makeSearch">{queryMake}</option>
+          ) : (
+            <option className="makeSearch">{firstStateFilter}</option>
+          )}
           {makes.map((make, i) => (
             <option key={i} value={make}>
               {make}
             </option>
           ))}
         </select>
+      </label>
+      <label>
+        <select name="rentPrice" id="rent"></select>
       </label>
       <button className="searchBtn" type="submit">
         Search
