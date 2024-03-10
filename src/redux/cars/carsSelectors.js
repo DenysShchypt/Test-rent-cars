@@ -4,3 +4,4 @@ export const selectFilterCars = state => state.cars.filterTermCars;
 export const selectIsLoading = state => state.cars.isLoading;
 export const selectError = state => state.cars.error;
 export const selectFilter = state => state.cars.filterTerm;
+export const viewIconSelect = state => state.cars.isIconActive;

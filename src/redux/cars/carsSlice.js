@@ -12,7 +12,8 @@ const initialState = {
     page: 1,
     auto: [],
     filterTerm: 'Enter to text',
-    filterTermCars: []
+    filterTermCars: [],
+    isIconActive: false,
 }
 export const carsSlice = createSlice({
     name: "cars",
@@ -26,6 +27,9 @@ export const carsSlice = createSlice({
         },
         setFilterTermCars(state, actions) {
             state.filterTermCars = actions.payload
+        },
+        changeViewIconSelect(state, actions) {
+            state.isIconActive = actions.payload
         },
     },
     extraReducers: (builder) => {
@@ -47,4 +51,4 @@ export const carsSlice = createSlice({
     },
 })
 
-export const { changePage, setFilterTerm, setFilterTermCars } = carsSlice.actions;
+export const { changePage, setFilterTerm, setFilterTermCars, changeViewIconSelect } = carsSlice.actions;
